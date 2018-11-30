@@ -12,7 +12,6 @@ import javax.ws.rs.Produces;
  * Controler управления информацией об офисах
  *
  * */
-
 @RestController
 @RequestMapping("api/office")
 @Produces("application/json")
@@ -75,7 +74,7 @@ public class OfficeController {
     @PostMapping("/update")
     public String officeUpdate(@RequestBody OfficeView officeView) {
 
-            return new Response<>("data").toString();
+            return new Response<>("data").sendData();
 
     }
 
