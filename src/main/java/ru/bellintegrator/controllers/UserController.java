@@ -77,8 +77,8 @@ public class UserController {
     @PostMapping("/update")
     public void userUpdate(@RequestBody UserView userView) {
         if (userView.id <= 0 ||
-                userView.firstName == null || "".equals(userView.firstName) ||
-                userView.position == null || "".equals(userView.position)) {
+                userView.firstName == null || "".equals(userView.firstName)
+                || userView.position == null || "".equals(userView.position)) {
             return;
         }
     }
