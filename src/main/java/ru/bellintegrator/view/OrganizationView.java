@@ -1,29 +1,55 @@
 package ru.bellintegrator.view;
 
 import javax.validation.constraints.NotEmpty;
-
+/**
+ * Организация
+ * */
 public class OrganizationView {
 
+    /**
+     * Уникальный идентификатор
+     * */
     @NotEmpty
-    public long id;
+    public Long id;
 
+    /**
+     * Название
+     * */
     @NotEmpty(message = "name cannot be null")
-    public String name;  //обязательный параметр
+    public String name;
 
+    /**
+     * Официальное (юридическое) название
+     * */
     @NotEmpty(message = "fullname cannot be null")
-    public String fullName; //обязательный параметр
+    public String fullName;
 
+    /**
+     * ИНН
+     * */
     @NotEmpty(message = "inn cannot be null")
-    public String inn; //обязательный параметр
+    public String inn;
 
+    /**
+     * КПП
+     * */
     @NotEmpty(message = "kpp cannot be null")
-    public String kpp; //обязательный параметр
+    public String kpp;
 
+    /**
+     * Адрес
+     * */
     @NotEmpty(message = "address cannot be null")
-    public String address; //обязательный параметр
+    public String address;
 
+    /**
+     * Телефон
+     * */
     public String phone;
 
+    /**
+     * Состояние организации (работает - прекратило деятельность)
+     * */
     public Boolean isActive;
 
 

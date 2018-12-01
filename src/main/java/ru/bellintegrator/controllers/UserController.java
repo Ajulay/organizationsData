@@ -1,11 +1,16 @@
 package ru.bellintegrator.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import ru.bellintegrator.util.Response;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.view.UserView;
 
 import javax.ws.rs.Produces;
+import java.util.List;
 
 
 /**
@@ -23,7 +28,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
     /**
      * Получает все объекты User по указанным параметрам
      *
@@ -31,10 +35,8 @@ public class UserController {
      * @return
      */
     @PostMapping("/list")
-    public String getUsersByParam(@RequestBody UserView userView) {
-
-
-        return new Response("data").sendData();
+    public List<UserView> getUsersByParam(@RequestBody UserView userView) {
+        return null;
     }
 
     /**
@@ -44,11 +46,11 @@ public class UserController {
      * @return
      */
     @GetMapping("/{id}")
-    public String getUserById(@PathVariable("id") long id) {
+    public UserView getUserById(@PathVariable("id") long id) {
         if (id <= 0) {
-            return new Response<>("Введите корректный 'id'").sendError();
+            return null;
         }
-        return new Response<>("data").sendResult();
+        return null;
     }
 
     /**
@@ -58,16 +60,12 @@ public class UserController {
      * @return
      */
     @PostMapping("/save")
-    public String saveNewUser(@RequestBody UserView userView) {
-
-        if (userView.firstName == null || userView.firstName.equals("") ||
-                userView.officeId <= 0 ||
-                userView.position == null || userView.firstName.equals("")
-                ) {
-            return new Response<>("Введите обязательные реквизиты").sendError();
+    public void saveNewUser(@RequestBody UserView userView) {
+        if (userView.firstName == null || "".equals(userView.firstName)
+                || userView.officeId <= 0
+                || userView.position == null || "".equals(userView.firstName)) {
+            return;
         }
-        return new Response<>("data").sendData();
-
     }
 
     /**
@@ -77,17 +75,11 @@ public class UserController {
      * @return
      */
     @PostMapping("/update")
-    public String userUpdate(@RequestBody UserView userView) {
+    public void userUpdate(@RequestBody UserView userView) {
         if (userView.id <= 0 ||
-                userView.firstName == null || userView.firstName.equals("") ||
-                userView.position == null || userView.position.equals("")) {
-
-
-            return new Response<>("Введите обязательные реквизит: id, firstName, position").sendError();
-
+                userView.firstName == null || "".equals(userView.firstName) ||
+                userView.position == null || "".equals(userView.position)) {
+            return;
         }
-        return new Response<>("data").sendResult();
-
     }
-
 }

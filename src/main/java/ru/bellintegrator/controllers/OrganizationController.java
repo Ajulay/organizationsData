@@ -1,11 +1,18 @@
 package ru.bellintegrator.controllers;
 
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import ru.bellintegrator.util.Response;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.view.OrganizationView;
 
 import javax.ws.rs.Produces;
+import java.util.List;
 
 
 /**
@@ -19,11 +26,9 @@ public class OrganizationController {
 
     private final OrganizationService organizationService;
 
-
     @Autowired
     public OrganizationController(OrganizationService organizationService) {
         this.organizationService = organizationService;
-
     }
 
     /**
@@ -33,8 +38,8 @@ public class OrganizationController {
      * @return
      */
     @PostMapping("/list")
-    public String organizations(@RequestBody OrganizationView organizationViewParam) {
-        return new Response("data").sendData();
+    public List<OrganizationView> organizations(@RequestBody OrganizationView organizationViewParam) {
+        return null;
     }
 
     /**
@@ -44,10 +49,8 @@ public class OrganizationController {
      * @return
      */
     @GetMapping("/{id}")
-    public String getOrganizationById(@PathVariable("id") long id) {
-
-        return new Response<>("data").sendData();
-
+    public OrganizationView getOrganizationById(@PathVariable("id") long id) {
+        return null;
     }
 
     /**
@@ -57,9 +60,7 @@ public class OrganizationController {
      * @return
      */
     @PostMapping("/update")
-    public String getOrganizationById(@RequestBody OrganizationView organizationView) {
-
-        return new Response<>("data").sendResult();
+    public void getOrganizationById(@RequestBody OrganizationView organizationView) {
     }
 
     /**
@@ -69,10 +70,6 @@ public class OrganizationController {
      * @return
      */
     @PostMapping("/save")
-    public String saveNewOrganization(@RequestBody OrganizationView organizationView){
-
-        return new Response<>("data").sendResult();
-
+    public void saveNewOrganization(@RequestBody OrganizationView organizationView){
     }
-
 }

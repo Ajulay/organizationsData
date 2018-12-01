@@ -1,11 +1,16 @@
 package ru.bellintegrator.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import ru.bellintegrator.util.Response;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.view.OfficeView;
 
 import javax.ws.rs.Produces;
+import java.util.List;
 
 
 /**
@@ -17,14 +22,12 @@ import javax.ws.rs.Produces;
 @Produces("application/json")
 public class OfficeController {
 
-
     private final OfficeService officeService;
 
     @Autowired
     public OfficeController(OfficeService officeService) {
         this.officeService = officeService;
     }
-
 
     /**
      * Получает все объекты Office по указанным параметрам
@@ -34,12 +37,10 @@ public class OfficeController {
      * @return
      */
     @PostMapping("/list/{orgId}")
-    public String getOfficesByParam(@PathVariable("orgId") long orgId, @RequestBody OfficeView officeView) {
+    public List<OfficeView> getOfficesByParam(@PathVariable("orgId") Long orgId, @RequestBody OfficeView officeView) {
+            return null;
+    }
 
-            return new Response("data").sendData();
-
-
-}
     /**
      * Получает объект Office по id
      *
@@ -47,10 +48,8 @@ public class OfficeController {
      * @return
      */
     @GetMapping("/{id}")
-    public String getOfficeById(@PathVariable("id") long id) {
-
-            return  new Response<>("data").sendResult();
-
+    public OfficeView getOfficeById(@PathVariable("id") Long id) {
+            return  null;
     }
 
     /**
@@ -60,9 +59,7 @@ public class OfficeController {
      * @return
      */
     @PostMapping("/save")
-    public String saveNewOffice(@RequestBody OfficeView officeView){
-
-            return new Response<>("data").sendData();
+    public void saveNewOffice(@RequestBody OfficeView officeView){
     }
 
     /**
@@ -72,10 +69,6 @@ public class OfficeController {
      * @return
      */
     @PostMapping("/update")
-    public String officeUpdate(@RequestBody OfficeView officeView) {
-
-            return new Response<>("data").sendData();
-
+    public void officeUpdate(@RequestBody OfficeView officeView) {
     }
-
 }
