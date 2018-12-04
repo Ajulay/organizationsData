@@ -10,13 +10,11 @@ public class UserView {
     /**
      * Уникальный идентификатор
      * */
-    @NotEmpty
     public Long id;
 
     /**
      * Идентификатор офиса
      * */
-    @NotEmpty
     public Long officeId;
 
     /**
@@ -69,15 +67,16 @@ public class UserView {
     /**
      * Гражданство
      * */
-    public String country;
+    public String citizenshipName;
 
     /**
      * Код страны
      * */
-    public String countryCode;
+    public String citizenshipCode;
 
     /**
      * Сведения о подтверждении личности
      * */
     public Boolean isIdentified;
+
 }

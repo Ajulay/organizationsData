@@ -9,7 +9,6 @@ public class OrganizationView {
     /**
      * Уникальный идентификатор
      * */
-    @NotEmpty
     public Long id;
 
     /**

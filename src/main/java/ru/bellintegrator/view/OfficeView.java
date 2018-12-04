@@ -9,13 +9,11 @@ public class OfficeView {
     /**
      * Уникальный идентификатор
      * */
-    @NotEmpty
     public Long id;
 
     /**
      * Идентификатор организации
      * */
-    @NotEmpty
     public Long orgId;
 
     /**

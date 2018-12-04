@@ -1,7 +1,6 @@
 CREATE TABLE organization
 (
     id       BIGSERIAL NOT NULL,
-    version  INTEGER NOT NULL,
     name     CHARACTER(50) NOT NULL,
     fullname CHARACTER(150) NOT NULL,
     inn      CHARACTER(10) NOT NULL,
@@ -14,7 +13,6 @@ CREATE TABLE organization
 
 COMMENT ON TABLE organization IS 'Организация';
 COMMENT ON COLUMN organization.id IS 'Уникальный идентификатор';
-COMMENT ON COLUMN organization.version IS 'Служебное поле hibernet';
 COMMENT ON COLUMN organization.name IS 'Название';
 COMMENT ON COLUMN organization.fullname IS 'Официальное (юридическое) название';
 COMMENT ON COLUMN organization.inn IS 'ИНН';

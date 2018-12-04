@@ -7,14 +7,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.bellintegrator.services.UserService;
 import ru.bellintegrator.view.UserView;
 
+import javax.validation.Valid;
 import javax.ws.rs.Produces;
+import java.text.ParseException;
 import java.util.List;
 
-
 /**
- * Controler управления информацией об сотрудниках
+ * Controller управления информацией об сотрудниках
  */
 @RestController
 @RequestMapping("/api/user")
@@ -29,57 +31,52 @@ public class UserController {
     }
 
     /**
-     * Получает все объекты User по указанным параметрам
+     * Получает всех сотрудников по указанным параметрам
      *
      * @param userView
      * @return
      */
     @PostMapping("/list")
-    public List<UserView> getUsersByParam(@RequestBody UserView userView) {
-        return null;
+    public List<UserView> getUsersByParam(@RequestBody UserView userView) throws Exception {
+        if(userView.officeId == null){
+            throw new Exception("Where is office id?");
+        }
+        return userService.getUsersByViewParam(userView);
     }
 
     /**
-     * Получает объект User по id
+     * Получает сотрудника по id
      *
      * @param id
      * @return
      */
     @GetMapping("/{id}")
-    public UserView getUserById(@PathVariable("id") long id) {
-        if (id <= 0) {
-            return null;
-        }
-        return null;
+    public UserView getUserById(@PathVariable("id") Long id) {
+        return userService.findById(id);
     }
 
     /**
-     * Сохраняет новый объект User
+     * Сохраняет нового сотрудника
      *
      * @param userView
      * @return
      */
     @PostMapping("/save")
-    public void saveNewUser(@RequestBody UserView userView) {
-        if (userView.firstName == null || "".equals(userView.firstName)
-                || userView.officeId <= 0
-                || userView.position == null || "".equals(userView.firstName)) {
-            return;
-        }
+    public void saveNewUser(@Valid @RequestBody UserView userView) throws ParseException {
+        userService.saveNewUser(userView);
     }
 
     /**
-     * Обновляет данные запрашиваемого User
+     * Обновляет данные запрашиваемого сотрудника
      *
      * @param userView
      * @return
      */
     @PostMapping("/update")
-    public void userUpdate(@RequestBody UserView userView) {
-        if (userView.id <= 0 ||
-                userView.firstName == null || "".equals(userView.firstName)
-                || userView.position == null || "".equals(userView.position)) {
-            return;
+    public void userUpdate(@Valid @RequestBody UserView userView) throws Exception {
+        if(userView.id == null){
+            throw new Exception("Where is id?");
         }
+        userService.userUpdate(userView);
     }
 }
