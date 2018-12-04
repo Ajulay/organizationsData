@@ -8,27 +8,47 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Офис
+ */
 @Entity
 @Table(name = "office")
 public class Office {
-
+    /**
+     * Уникальный идентификатор
+     */
     @Id
     @GeneratedValue
     private long id;
 
+    /**
+     * Связь с организацией
+     */
     @ManyToOne
     @JoinColumn(name = "org_id", nullable = false)
     private Organization organization;
 
+    /**
+     * Название офиса
+     */
     @Column(nullable = false)
     private String name;
 
+    /**
+     * Адрес офиса
+     */
     @Column(nullable = false)
     private String address;
 
+    /**
+     * Телефон
+     */
     @Column
     private String phone;
 
+    /**
+     * Сведения о функционировании
+     */
     @Column(name="active")
     private Boolean active;
 

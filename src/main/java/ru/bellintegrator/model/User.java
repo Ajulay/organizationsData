@@ -2,42 +2,75 @@ package ru.bellintegrator.model;
 
 import javax.persistence.*;
 
+/**
+ * Сотрудник
+ */
 @Entity
 @Table(name="\"user\"")
 public class User {
 
+    /**
+     * Уникальный идентификатор
+     */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Ссылка на офис
+     */
     @ManyToOne
     @JoinColumn(name = "office_id")
     private Office office;
 
+    /**
+     * Фамилия
+     */
     @Column(name="first_name", nullable = false)
     private String firstName; //обязательный параметр
 
+    /**
+     * Имя
+     */
     @Column(name = "second_name")
     private String secondName;
 
+    /**
+     * Отчество
+     */
     @Column(name="middle_name")
     private String middleName;
 
+    /**
+     * Должность
+     */
     @Column(name = "pozition", nullable = false)
     private String position; //обязательный параметр
 
+    /**
+     * Телефон
+     */
     @Column
     private String phone;
 
+    /**
+     * Документ, удостоверяющий личность
+     */
     @OneToOne
     @JoinColumn(name = "doc_id")
     private Doc doc;
 
+    /**
+     * Гражданство
+     */
     @Column(name = "country_id")
     private Country country;
 
+    /**
+     * Сведения о подтверждении личности
+     */
     @Column(name="identified")
-    private boolean identified; //пример
+    private boolean identified;
 
     public Long getId() {
         return id;

@@ -7,32 +7,59 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Организация
+ */
 @Entity
 @Table(name="organization")
 public class Organization {
 
+    /**
+     * Уникальный идентификатор
+     */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Название организации, не может быть без названия
+     */
     @Column(nullable = false)
-    private String name;  //обязательный параметр
+    private String name;
 
+    /**
+     * Полное(юридическое) название организации
+     */
     @Column(name = "fullname", nullable = false)
-    private String fullName; //обязательный параметр
+    private String fullName;
 
+    /**
+     * Инн организации, не может отсутствовать
+     */
     @Column(nullable = false)
-    private String inn; //обязательный параметр
+    private String inn;
 
+    /**
+     * КПП организации, не может отсутствовать
+     */
     @Column(nullable = false)
-    private String kpp; //обязательный параметр
+    private String kpp;
 
+    /**
+     * Адрес организации, не может отсутствовать
+     */
     @Column(nullable = false)
-    private String address; //обязательный параметр
+    private String address;
 
+    /**
+     * Телефон организации
+     */
     @Column
     private String phone;
 
+    /**
+     * Сведения о ведении деятельности
+     */
     @Column
     private Boolean active;
 

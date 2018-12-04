@@ -11,25 +11,38 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
-
+/**
+ * Документ
+ */
 @Entity
 public class Doc {
 
+    /**
+     * Уникальный идентификатор
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    /**
+     * Номер документа
+     */
     @Column(name="doc_number")
     private String docNumber;
 
+    /**
+     * Дата документа
+     */
     @Column(name="doc_date")
     @Temporal(TemporalType.DATE)
     private Date docDate;
 
+    /**
+     * Тип документа, обязательный параметр
+     */
     @ManyToOne
     @JoinColumn(name="doc_type_id")
     private DocType docType;
-
 
     public long getId() {
         return id;

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.services.UserService;
 import ru.bellintegrator.view.UserView;
-
 import javax.validation.Valid;
 import javax.ws.rs.Produces;
 import java.text.ParseException;

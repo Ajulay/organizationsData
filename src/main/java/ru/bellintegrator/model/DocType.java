@@ -5,17 +5,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+/**
+ * Тип документа
+ */
 @Entity
 public class DocType {
 
+    /**
+     * Уникальный идентификатор
+     */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
+    /**
+     * Название типа документа
+     */
     @Column(nullable = false)
     private String name;
 
+    /**
+     * Код типа документа
+     */
     @Column(nullable = false)
     private String code;
 

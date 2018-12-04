@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Страна
+ */
 @Entity
 public class Country {
 
@@ -13,9 +16,15 @@ public class Country {
     @Id
     private long id;
 
+    /**
+     * Название страны, не может быть без названия
+     */
     @Column(nullable = false)
     private String name;
 
+    /**
+     * Код страны, должен быть присвоен
+     */
     @Column(nullable = false)
     private String code;
 
