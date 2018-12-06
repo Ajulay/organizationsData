@@ -3,6 +3,7 @@ package ru.bellintegrator.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.bellintegrator.dao.organizationdao.OrganizationDao;
 import ru.bellintegrator.model.Organization;
 import ru.bellintegrator.view.OrganizationView;
 import java.util.ArrayList;

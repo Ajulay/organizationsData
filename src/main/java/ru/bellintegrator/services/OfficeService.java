@@ -36,4 +36,10 @@ public interface OfficeService {
      *
      */
     void officeUpdate(@Valid OfficeView officeViewParam);
+
+    /**
+     * Получить список офисов по id организации
+     *
+     */
+    List<OfficeView> getOfficesByOrgId(Long orgId);
 }

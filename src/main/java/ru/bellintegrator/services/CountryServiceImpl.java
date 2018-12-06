@@ -3,6 +3,7 @@ package ru.bellintegrator.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.bellintegrator.dao.countrydao.CountryDao;
 import ru.bellintegrator.model.Country;
 import ru.bellintegrator.view.CountryView;
 
@@ -27,7 +28,7 @@ public class CountryServiceImpl implements CountryService{
      */
     @Transactional
     public List<CountryView> getCountries(){
-        List<Country> countries = dao.getCountries();
+        List<Country> countries = countryDao.getCountries();
         List<CountryView> countryViews = new ArrayList<>();
         for (Country country : countries) {
             countryViews.add(createCountryView(country));

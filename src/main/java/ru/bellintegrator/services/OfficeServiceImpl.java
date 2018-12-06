@@ -3,6 +3,8 @@ package ru.bellintegrator.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.bellintegrator.dao.officedao.OfficeDao;
+import ru.bellintegrator.dao.organizationdao.OrganizationDao;
 import ru.bellintegrator.model.Office;
 import ru.bellintegrator.model.Organization;
 import ru.bellintegrator.view.OfficeView;
@@ -41,7 +43,7 @@ public class OfficeServiceImpl implements OfficeService{
      * {@inheritDoc}
      */
     @Transactional(readOnly = true)
-    public List<OfficeView> getOfficesByOrgId(OfficeView officeViewParam) {
+    public List<OfficeView> getOfficesByOfficeViewParam(OfficeView officeViewParam) {
         List<Office> offices = officeDao.loadByOfficeViewParam(officeViewParam);
         List<OfficeView> officeViews = new ArrayList<>();
         for (Office office: offices) {
@@ -54,7 +56,7 @@ public class OfficeServiceImpl implements OfficeService{
      */
     @Transactional(readOnly = true)
     public OfficeView getOfficeById(Long id) {
-        Office office = dao.loadById(id);
+        Office office = officeDao.loadById(id);
 
         return createOfficeView(office);
     }
@@ -71,7 +73,7 @@ public class OfficeServiceImpl implements OfficeService{
         office.setAddress(officeViewParam.address);
         office.setPhone(officeViewParam.phone);
         office.setActive(officeViewParam.isActive);
-        dao.save(office);
+        officeDao.save(office);
     }
 
     /**
@@ -79,14 +81,14 @@ public class OfficeServiceImpl implements OfficeService{
      */
     @Transactional
     public void officeUpdate(OfficeView officeViewParam) {
-        Office office = dao.loadById(officeViewParam.id);
+        Office office = officeDao.loadById(officeViewParam.id);
         Organization organization = organizationDao.loadById(officeViewParam.orgId);
         office.setOrganization(organization);
         office.setName(officeViewParam.name);
         office.setAddress(officeViewParam.address);
         office.setPhone(officeViewParam.phone);
         office.setActive(officeViewParam.isActive);
-        dao.update(office);
+        officeDao.update(office);
     }
 
     private OfficeView createOfficeView(Office office){

@@ -3,6 +3,10 @@ package ru.bellintegrator.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.bellintegrator.dao.countrydao.CountryDao;
+import ru.bellintegrator.dao.docdao.DocDao;
+import ru.bellintegrator.dao.officedao.OfficeDao;
+import ru.bellintegrator.dao.userdao.UserDao;
 import ru.bellintegrator.model.*;
 import ru.bellintegrator.view.UserView;
 
@@ -20,11 +24,15 @@ public class UserServiceImpl implements UserService{
 
     private final UserDao userDao;
     private final OfficeDao officeDao;
+    private final CountryDao countryDao;
+    private final DocDao docDao;
 
     @Autowired
-    public UserServiceImpl(UserDao userDao, OfficeDao officeDao) {
+    public UserServiceImpl(UserDao userDao, OfficeDao officeDao, CountryDao countryDao, DocDao docDao) {
         this.userDao = userDao;
         this.officeDao = officeDao;
+        this.countryDao = countryDao;
+        this.docDao = docDao;
     }
 
     /**
@@ -57,7 +65,7 @@ public class UserServiceImpl implements UserService{
         User user = new User();
         Office office = officeDao.loadById(userView.officeId);
         Country country = countryDao.loadByCode(userView.citizenshipCode);
-        DocType docType = docTypeDao.loadByCode(userView.docCode);
+        DocType docType = docDao.loadByCode(userView.docCode);
         Doc doc = new Doc();
         SimpleDateFormat dsf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = dsf.parse(userView.docDate);
@@ -73,7 +81,7 @@ public class UserServiceImpl implements UserService{
         user.setDoc(doc);
         user.setPhone(userView.phone);
         user.setIdentified(userView.isIdentified);
-        dao.save(user);
+        userDao.save(user);
     }
 
     /**
@@ -81,7 +89,7 @@ public class UserServiceImpl implements UserService{
      */
     @Transactional
     public void userUpdate(UserView userView) throws ParseException {
-        User user = dao.loadById(userView.id);
+        User user = userDao.loadById(userView.id);
         if (userView.officeId != null){
             Office office = user.getOffice();
             user.setOffice(office);
@@ -128,7 +136,7 @@ public class UserServiceImpl implements UserService{
         if(userView.isIdentified != null){
             user.setIdentified(userView.isIdentified);
         }
-        dao.update(user);
+        userDao.update(user);
     }
 
     private UserView createUserView(User user){

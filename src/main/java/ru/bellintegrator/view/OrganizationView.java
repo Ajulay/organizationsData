@@ -56,12 +56,12 @@ public class OrganizationView {
     public String toString() {
         return "{" +
                 "\"id\": \"" + id +
-                "\"; \"name\": \"" + name.trim() +
-                "\"; \"fullName\": \"" + fullName.trim() +
-                "\"; \"inn\": \"" + inn.trim() +
-                "\"; \"kpp\": \"" + kpp.trim() +
-                "\"; \"address\": \"" + address.trim() +
-                "\"; \"phone: \"" + (phone == null ? "" : phone.trim()) +
+                "\"; \"name\": \"" + name +
+                "\"; \"fullName\": \"" + fullName +
+                "\"; \"inn\": \"" + inn +
+                "\"; \"kpp\": \"" + kpp +
+                "\"; \"address\": \"" + address +
+                "\"; \"phone: \"" + (phone == null ? "" : phone) +
                 "\"; \"isActive: \"" + isActive +
                 "\"}";
     }

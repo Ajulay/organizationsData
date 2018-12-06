@@ -14,7 +14,7 @@ public class Country {
 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Id
-    private long id;
+    private Long id;
 
     /**
      * Название страны, не может быть без названия

@@ -3,6 +3,7 @@ package ru.bellintegrator.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.bellintegrator.dao.docdao.DocDao;
 import ru.bellintegrator.model.DocType;
 import ru.bellintegrator.view.DocTypeView;
 
@@ -15,11 +16,11 @@ import java.util.List;
 @Service
 public class DocTypeServiceImpl implements DocTypeService{
 
-    private final DocTypeDao docTypeDao;
+    private final DocDao docDao;
 
     @Autowired
-    public DocTypeServiceImpl(DocTypeDao docTypeDao) {
-        this.docTypeDao = docTypeDao;
+    public DocTypeServiceImpl(DocDao docDao) {
+        this.docDao = docDao;
     }
 
     /**
@@ -27,7 +28,7 @@ public class DocTypeServiceImpl implements DocTypeService{
      */
     @Transactional
     public List<DocTypeView> getDocTypes(){
-        List<DocType> docTypes = dao.getDocTypes();
+        List<DocType> docTypes = docDao.getDocTypes();
         List<DocTypeView> docTypeViews = new ArrayList<>();
         for (DocType docType : docTypes) {
             docTypeViews.add(createDocTypeView(docType));

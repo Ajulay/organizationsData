@@ -63,7 +63,8 @@ public class User {
     /**
      * Гражданство
      */
-    @Column(name = "country_id")
+    @ManyToOne
+    @JoinColumn(name = "country_id")
     private Country country;
 
     /**
