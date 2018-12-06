@@ -1,13 +1,14 @@
 package ru.bellintegrator.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Сотрудник
  */
 @Entity
-@Table(name="\"user\"")
-public class User {
+@Table(name="_user")
+public class User{
 
     /**
      * Уникальный идентификатор
@@ -20,14 +21,14 @@ public class User {
      * Ссылка на офис
      */
     @ManyToOne
-    @JoinColumn(name = "office_id")
+    @JoinColumn(name = "office_id", nullable = false)
     private Office office;
 
     /**
      * Фамилия
      */
     @Column(name="first_name", nullable = false)
-    private String firstName; //обязательный параметр
+    private String firstName;
 
     /**
      * Имя
@@ -45,7 +46,7 @@ public class User {
      * Должность
      */
     @Column(name = "pozition", nullable = false)
-    private String position; //обязательный параметр
+    private String position;
 
     /**
      * Телефон
@@ -71,7 +72,7 @@ public class User {
      * Сведения о подтверждении личности
      */
     @Column(name="identified")
-    private boolean identified;
+    private Boolean identified;
 
     public Long getId() {
         return id;
@@ -90,7 +91,7 @@ public class User {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstName.trim();
     }
 
     public void setFirstName(String firstName) {
@@ -98,6 +99,9 @@ public class User {
     }
 
     public String getSecondName() {
+        if(secondName != null){
+            secondName.trim();
+        }
         return secondName;
     }
 
@@ -106,6 +110,9 @@ public class User {
     }
 
     public String getMiddleName() {
+        if(middleName != null){
+            middleName.trim();
+        }
         return middleName;
     }
 
@@ -114,7 +121,7 @@ public class User {
     }
 
     public String getPosition() {
-        return position;
+        return position.trim();
     }
 
     public void setPosition(String position) {
@@ -122,6 +129,9 @@ public class User {
     }
 
     public String getPhone() {
+        if(phone != null){
+            phone.trim();
+        }
         return phone;
     }
 
@@ -145,11 +155,11 @@ public class User {
         this.country = country;
     }
 
-    public boolean isIdentified() {
+    public Boolean isIdentified() {
         return identified;
     }
 
-    public void setIdentified(boolean identified) {
+    public void setIdentified(Boolean identified) {
         this.identified = identified;
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.bellintegrator.dao.organizationdao.OrganizationDao;
 import ru.bellintegrator.model.Organization;
+import ru.bellintegrator.model.mapper.MapperFacade;
 import ru.bellintegrator.view.OrganizationView;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +17,12 @@ import java.util.List;
 public class OrganizationServiceImpl implements OrganizationService{
 
     private final OrganizationDao dao;
+    private final MapperFacade mapperFacade;
 
     @Autowired
-    public OrganizationServiceImpl(OrganizationDao dao) {
+    public OrganizationServiceImpl(OrganizationDao dao, MapperFacade mapperFacade) {
         this.dao = dao;
+        this.mapperFacade = mapperFacade;
     }
 
     /**
@@ -41,7 +44,8 @@ public class OrganizationServiceImpl implements OrganizationService{
     @Transactional(readOnly = true)
     public OrganizationView findById (Long id){
         Organization organization = dao.loadById(id);
-        return createOrganizationView(organization);
+      //  return createOrganizationView(organization);
+        return createOrganizationViewByMapper(organization);
     }
 
     /**
@@ -49,17 +53,13 @@ public class OrganizationServiceImpl implements OrganizationService{
      */
     @Transactional
     public void organizationUpdate(OrganizationView organizationViewParam){
-        Organization organization = dao.loadById(organizationViewParam.id);
-        organization.setName(organizationViewParam.name);
-        organization.setFullName(organizationViewParam.fullName);
-        organization.setInn(organizationViewParam.inn);
-        organization.setKpp(organizationViewParam.kpp);
-        organization.setAddress(organizationViewParam.address);
-        if(organizationViewParam.phone != null){
-            organization.setPhone(organizationViewParam.phone);
+        Organization organization = createOrganizationByMapper(organizationViewParam);
+        Organization oldOrganization = dao.loadById(organization.getId());
+        if(organization.getPhone() == null){
+            organization.setPhone(oldOrganization.getPhone());
         }
-        if(organizationViewParam.isActive != null){
-            organization.setActive(organizationViewParam.isActive);
+        if(organization.isActive() == null){
+            organization.setActive(oldOrganization.isActive());
         }
         dao.update(organization);
         }
@@ -69,14 +69,7 @@ public class OrganizationServiceImpl implements OrganizationService{
      */
     @Transactional
     public void saveNewOrganization(OrganizationView organizationView){
-        Organization organization = new Organization();
-        organization.setName(organizationView.name);
-        organization.setFullName(organizationView.fullName);
-        organization.setInn(organizationView.inn);
-        organization.setKpp(organizationView.kpp);
-        organization.setAddress(organizationView.address);
-        organization.setPhone(organizationView.phone);
-        organization.setActive(organizationView.isActive);
+        Organization organization = createOrganizationByMapper(organizationView);
         dao.save(organization);
     }
 
@@ -90,5 +83,18 @@ public class OrganizationServiceImpl implements OrganizationService{
         organizationView.address = organization.getAddress();
         organizationView.phone = organization.getPhone();
         organizationView.isActive = organization.isActive();
-        return organizationView;}
+        return organizationView;
+    }
+
+    private OrganizationView createOrganizationViewByMapper(Organization organization){
+        OrganizationView organizationView = mapperFacade.map(organization, OrganizationView.class);
+        organizationView.isActive = organization.isActive();
+        return organizationView;
+    }
+
+    private Organization createOrganizationByMapper(OrganizationView organizationView){
+        Organization organization = mapperFacade.map(organizationView, Organization.class);
+        organization.setActive(organizationView.isActive);
+        return organization;
+    }
 }

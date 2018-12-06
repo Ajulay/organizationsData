@@ -34,6 +34,16 @@ public class DocDaoImpl implements DocDao{
      */
     @Override
     public DocType loadByCode(String docCode) {
-        return null;
+        TypedQuery<DocType> query = em.createQuery("SELECT dt FROM DocType dt WHERE dt.code=:code", DocType.class);
+        query.setParameter("code", docCode);
+        return query.getSingleResult();
+    }
+
+    @Override
+    public DocType loadByName(String docName) {
+        TypedQuery<DocType> query = em.createQuery("SELECT dt FROM DocType dt WHERE dt.name=:name", DocType.class);
+        query.setParameter("name", docName);
+        return query.getSingleResult();
+
     }
 }

@@ -215,111 +215,111 @@ INSERT INTO doc(
 	VALUES (1, '70 07 000007', '2007-07-07');
 
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (1, 'Иванов', 'Иван', 'Иванович', 'директор', '8-100-000-000-1', true, 1, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (1, 'Петров', 'Иван', 'Иванович', 'заместитель директора', '8-100-000-000-2', true,   2, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (1, 'Иванов', 'Петр', 'Иванович', 'главный бухгалтер', '8-100-000-000-3', true,  3, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (2, 'Сидоров', 'Сидор', 'Иванович', 'завхоз', '8-100-000-000-4', true,  4, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (2, 'Марков', 'Иван', 'Маркович', 'Старший менеджер', '8-100-000-000-5', true,   5, 1);
 
-INSERT INTO "user"(
+  INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (2, 'Добрый', 'Вечер', 'Семенович', 'Старший менеджер', '8-100-000-000-6', true, 6, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (3, 'Семенов', 'Семен', 'Семенович', 'Старший менеджер', '8-100-000-000-7', true, 7, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (3, 'Семенов', 'Иван', 'Семенович', 'юнга(стажер)', '8-100-000-000-1', true, 8 , 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (3, 'Манукян', 'Овик', 'Ашотович', 'стилист', '8-100-000-010-1', true, 9, 2);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (4, 'Тырин', 'Юрий', 'Иванович', 'директор', '8-100-000-100-1', true,  10, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified,  doc_id, country_id)
 	VALUES (4, 'Пузырев', 'Тимофей', 'Иванович', 'заместитель директора', '8-100-080-000-1', true, 11, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (4, 'Назарбаев', 'Назар', 'Мулдыбаевич', 'грузчик-кассир', '8-100-110-000-1', true, 12, 3);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (5, 'Римский', 'Сергей', 'Иванович', 'директор', '8-100-000-000-9', true, 13, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (5, 'Абрамян', 'Роман', 'Давлетович', 'заместитель директора', '8-100-007-000-1', true, 14, 2);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (5, 'Бенедиктов', 'Бенедикт', 'Иванович', 'продавец', '8-100-000-001-1', true, 15, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (6, 'Рахматов', 'Анвар', 'Иванович', 'директор', '8-100-000-090-1', true, 16, 5);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (6, 'Гирман', 'Фриц', 'Адольф', 'заместитель директора', '8-100-000-111-1', true, 17, 4);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (6, 'Миляев', 'Семен', 'Петрович', 'главный бухгалтер', '8-111-000-000-1', true, 18, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (7, 'Яев', 'Мил', 'Святович', 'директор', '8-900-000-000-1', true, 19, 6);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (7, 'Косова', 'Людмила', 'Петровна', 'заместитель директора', '8-100-999-000-1', true, 20, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (7, 'Иванова', 'Нааталья', 'Ивановна', 'главный бухгалтер', '8-100-000-888-1', true, 21, 1);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (8, 'Геббельс', 'Генрих', 'Иванович', 'директор', '8-100-000-000-1', true, 22, 4);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified,  doc_id, country_id)
 	VALUES (8, 'Геринг', 'Марк', 'Абросович', 'заместитель директора', '8-100-234-000-1', true, 23, 4);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (8, 'Брут', 'Александр', 'Утыкаевич', 'Старший менеджер', '8-100-010-010-1', true, 24, 4);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (9, 'Муродов', 'Ислам', 'Аллахович', 'продавец', '8-100-700-700-1', true, 25, 5);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (9, 'Геворкян', 'Инна', 'Петровна', 'главный бухгалтер', '8-100-000-888-1', true,  26, 2);
 
-INSERT INTO "user"(
+INSERT INTO _user(
 	         office_id, first_name, second_name, middle_name, pozition, phone, identified, doc_id, country_id)
 	VALUES (9, 'Лесов', 'Антон', 'Павлович', 'директор', '8-177-777-000-1', true, 27, 1);
 

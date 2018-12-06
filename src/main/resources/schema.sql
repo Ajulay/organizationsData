@@ -39,33 +39,31 @@ COMMENT ON COLUMN office.address IS 'Адрес';
 COMMENT ON COLUMN office.phone IS 'Телефон';
 COMMENT ON COLUMN office.active IS 'Состояние офиса (работает - прекратил деятельность)';
 
-
-
-CREATE TABLE "user"
+CREATE TABLE _user
 (
     id               BIGSERIAL NOT NULL,
-    office_id        BIGINT,
+    office_id        BIGINT NOT NULL,
     first_name       CHARACTER(50) NOT NULL,
     second_name      CHARACTER(50),
     middle_name      CHARACTER(50),
-    pozition         CHARACTER(50),
+    pozition         CHARACTER(50) NOT NULL,
     phone            CHARACTER(16),
     identified       BOOLEAN,
-    doc_id           BIGINT NOT NULL,
-    country_id       BIGINT NOT NULL,
+    doc_id           BIGINT,
+    country_id       BIGINT,
                      PRIMARY KEY (id)
 );
-COMMENT ON TABLE "user" IS 'Сотрудник';
-COMMENT ON COLUMN "user".id IS 'Уникальный идентификатор';
-COMMENT ON COLUMN "user".office_id IS 'Идентификатор офиса';
-COMMENT ON COLUMN "user".first_name IS 'Фамилия';
-COMMENT ON COLUMN "user".second_name IS 'Имя';
-COMMENT ON COLUMN "user".middle_name IS 'Отчество';
-COMMENT ON COLUMN "user".pozition IS 'Должность';
-COMMENT ON COLUMN "user".phone IS 'Телефон';
-COMMENT ON COLUMN "user".identified IS 'Сведения о подтверждении личности';
-COMMENT ON COLUMN "user".doc_id IS 'Идентификатор документов, удостоверяющих личность';
-COMMENT ON COLUMN "user".country_id IS 'Идентификатор гражданства';
+COMMENT ON TABLE  _user IS 'Сотрудник';
+COMMENT ON COLUMN _user.id IS 'Уникальный идентификатор';
+COMMENT ON COLUMN _user.office_id IS 'Идентификатор офиса';
+COMMENT ON COLUMN _user.first_name IS 'Фамилия';
+COMMENT ON COLUMN _user.second_name IS 'Имя';
+COMMENT ON COLUMN _user.middle_name IS 'Отчество';
+COMMENT ON COLUMN _user.pozition IS 'Должность';
+COMMENT ON COLUMN _user.phone IS 'Телефон';
+COMMENT ON COLUMN _user.identified IS 'Сведения о подтверждении личности';
+COMMENT ON COLUMN _user.doc_id IS 'Идентификатор документов, удостоверяющих личность';
+COMMENT ON COLUMN _user.country_id IS 'Идентификатор гражданства';
 
 
 CREATE TABLE doc
@@ -109,24 +107,23 @@ COMMENT ON COLUMN doc_type.id IS 'Уникальный идентификато�
 COMMENT ON COLUMN doc_type.name IS 'Название документа';
 COMMENT ON COLUMN doc_type.code IS 'Уникальный код документа';
 
-
 CREATE INDEX ix_office_org ON office(organization_id, name, address, phone) ;
 ALTER TABLE office
 ADD CONSTRAINT office_organization_id_fk
 FOREIGN KEY (organization_id) REFERENCES organization (id) ON DELETE CASCADE ON UPDATE CASCADE;
 
-CREATE INDEX ix_user_office ON "user"(office_id);
-ALTER TABLE "user"
+CREATE INDEX ix_user_office ON _user(office_id);
+ALTER TABLE _user
 ADD CONSTRAINT user_office_id_fk
 FOREIGN KEY (office_id) REFERENCES office (id) ON DELETE CASCADE ON UPDATE CASCADE;
 
-CREATE INDEX ix_user_doc ON "user"(doc_id);
-ALTER TABLE "user"
+CREATE INDEX ix_user_doc ON _user(doc_id);
+ALTER TABLE _user
 ADD CONSTRAINT user_doc_id_fk
 FOREIGN KEY (doc_id) REFERENCES doc(id) ON DELETE CASCADE ON UPDATE CASCADE;
 
-CREATE INDEX ix_user_country ON "user"(country_id);
-ALTER TABLE "user"
+CREATE INDEX ix_user_country ON _user(country_id);
+ALTER TABLE _user
 ADD CONSTRAINT user_country_id_fk
 FOREIGN KEY (country_id) REFERENCES country (id) ON DELETE CASCADE ON UPDATE CASCADE;
 

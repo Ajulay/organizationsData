@@ -82,7 +82,7 @@ public class OfficeDaoImpl implements OfficeDao {
             predicates.add(builder.equal(office.get("name"), officeView.name));
         }
         if(officeView.orgId !=null && !"".equals(officeView.orgId)){
-            predicates.add(builder.equal(office.get("organization"), officeView.orgId));
+            predicates.add(builder.equal(office.get("organization").get("id"), officeView.orgId));
         }
 
         if(officeView.address != null && !"".equals(officeView.address)){

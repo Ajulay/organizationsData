@@ -41,10 +41,12 @@ public class OfficeController {
      */
     @PostMapping("/list/{orgId}")
     public List<OfficeView> getOfficesByParam(@PathVariable("orgId") Long orgId, @RequestBody OfficeView officeView) throws Exception {
-        if(orgId == null){
+        if(orgId == null && officeView.orgId == null){
             throw new Exception("Where is orgId?");
         }
-           officeView.orgId = orgId;
+        if(officeView.orgId == null){
+            officeView.orgId = orgId;
+        }
             return officeService.getOfficesByOfficeViewParam(officeView);
     }
 

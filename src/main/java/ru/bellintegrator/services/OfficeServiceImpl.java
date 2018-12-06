@@ -82,13 +82,18 @@ public class OfficeServiceImpl implements OfficeService{
     @Transactional
     public void officeUpdate(OfficeView officeViewParam) {
         Office office = officeDao.loadById(officeViewParam.id);
+        if(officeViewParam.orgId != null){
         Organization organization = organizationDao.loadById(officeViewParam.orgId);
         office.setOrganization(organization);
+        }
         office.setName(officeViewParam.name);
         office.setAddress(officeViewParam.address);
-        office.setPhone(officeViewParam.phone);
-        office.setActive(officeViewParam.isActive);
-        officeDao.update(office);
+        if(officeViewParam.phone != null) {
+            office.setPhone(officeViewParam.phone);
+        }
+        if(officeViewParam.isActive != null) {
+            office.setActive(officeViewParam.isActive);
+        }
     }
 
     private OfficeView createOfficeView(Office office){
@@ -99,7 +104,6 @@ public class OfficeServiceImpl implements OfficeService{
         officeView.address = office.getAddress();
         officeView.phone = office.getPhone();
         officeView.isActive = office.isActive();
-
         return officeView;
     }
 }

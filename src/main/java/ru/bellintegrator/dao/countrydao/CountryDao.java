@@ -21,4 +21,10 @@ public interface CountryDao {
      *
      */
     Country loadByCode(String citizenshipCode);
+
+    /**
+     * Получение Country по названию
+     *
+     */
+    Country loadByName(String citizenshipName);
 }

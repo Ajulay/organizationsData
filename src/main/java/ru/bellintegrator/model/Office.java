@@ -1,12 +1,6 @@
 package ru.bellintegrator.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Офис
@@ -18,14 +12,14 @@ public class Office {
      * Уникальный идентификатор
      */
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
 
     /**
      * Связь с организацией
      */
     @ManyToOne
-    @JoinColumn(name = "org_id", nullable = false)
+    @JoinColumn(name = "organization_id", nullable = false)
     private Organization organization;
 
     /**
@@ -68,11 +62,10 @@ public class Office {
         this.organization = organization;
     }
 
-    public Boolean getActive() {
-        return active;
-    }
-
     public String getName() {
+        if(name != null){
+            name.trim();
+        }
         return name;
     }
 
@@ -81,6 +74,9 @@ public class Office {
     }
 
     public String getAddress() {
+        if(address != null){
+            address.trim();
+        }
         return address;
     }
 
@@ -89,6 +85,9 @@ public class Office {
     }
 
     public String getPhone() {
+        if(phone != null){
+            phone.trim();
+        }
         return phone;
     }
 

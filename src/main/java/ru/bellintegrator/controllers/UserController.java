@@ -11,7 +11,6 @@ import ru.bellintegrator.services.UserService;
 import ru.bellintegrator.view.UserView;
 import javax.validation.Valid;
 import javax.ws.rs.Produces;
-import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -61,7 +60,10 @@ public class UserController {
      * @return
      */
     @PostMapping("/save")
-    public void saveNewUser(@Valid @RequestBody UserView userView) throws ParseException {
+    public void saveNewUser(@Valid @RequestBody UserView userView) throws Exception {
+        if(userView.officeId == null){
+            throw new Exception("Where is office id?");
+        }
         userService.saveNewUser(userView);
     }
 

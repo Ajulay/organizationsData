@@ -1,6 +1,7 @@
 package ru.bellintegrator.view;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * Сотрудник

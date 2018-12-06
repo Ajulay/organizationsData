@@ -17,5 +17,15 @@ public interface DocDao {
      */
     List<DocType> getDocTypes();
 
+    /**
+     * Получение DocType по коду
+     *
+     */
     DocType loadByCode(String docCode);
+
+    /**
+     * Получение данных о DocType по названию
+     *
+     */
+    DocType loadByName(String docName);
 }

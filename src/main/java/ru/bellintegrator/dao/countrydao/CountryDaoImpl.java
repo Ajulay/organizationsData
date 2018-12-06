@@ -36,4 +36,14 @@ public class CountryDaoImpl implements CountryDao {
         query.setParameter("code", code);
         return query.getSingleResult();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Country loadByName(String name) {
+        TypedQuery<Country> query = em.createQuery("SELECT c FROM Country c WHERE c.name =: name", Country.class);
+        query.setParameter("name", name);
+        return query.getSingleResult();
+    }
 }

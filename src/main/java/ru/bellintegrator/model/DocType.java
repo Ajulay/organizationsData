@@ -39,6 +39,9 @@ public class DocType {
     }
 
     public String getName() {
+        if(name != null){
+            name.trim();
+        }
         return name;
     }
 

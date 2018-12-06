@@ -53,6 +53,9 @@ public class Doc {
     }
 
     public String getDocNumber() {
+        if(docNumber != null){
+            docNumber.trim();
+        }
         return docNumber;
     }
 
