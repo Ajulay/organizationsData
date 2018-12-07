@@ -11,14 +11,14 @@ import javax.persistence.Table;
  * Организация
  */
 @Entity
-@Table(name="organization")
+@Table(name = "organization")
 public class Organization {
 
     /**
      * Уникальный идентификатор
      */
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
@@ -104,7 +104,7 @@ public class Organization {
     }
 
     public String getAddress() {
-        if(address != null){
+        if (address != null) {
             address.trim();
         }
         return address;
@@ -115,7 +115,7 @@ public class Organization {
     }
 
     public String getPhone() {
-        if(phone != null){
+        if (phone != null) {
             phone.trim();
         }
         return phone;

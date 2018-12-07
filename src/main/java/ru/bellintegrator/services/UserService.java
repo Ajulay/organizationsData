@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Сервис
- * */
+ */
 @Validated
 public interface UserService {
 
@@ -29,13 +29,11 @@ public interface UserService {
 
     /**
      * Сохранить данные нового сотрудника
-     *
      */
     void saveNewUser(@Valid UserView userView) throws ParseException;
 
     /**
      * Обновить данные сотрудника
-     *
      */
     void userUpdate(@Valid UserView userView) throws ParseException;
 }

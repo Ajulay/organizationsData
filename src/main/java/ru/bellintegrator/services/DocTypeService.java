@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Сервис
- * */
+ */
 public interface DocTypeService {
 
     /**

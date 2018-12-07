@@ -2,12 +2,12 @@ package ru.bellintegrator.services;
 
 import org.springframework.validation.annotation.Validated;
 import ru.bellintegrator.view.OfficeView;
-
 import javax.validation.Valid;
 import java.util.List;
+
 /**
  * Сервис
- * */
+ */
 @Validated
 public interface OfficeService {
 
@@ -27,19 +27,16 @@ public interface OfficeService {
 
     /**
      * Сохранить данные нового офиса
-     *
      */
     void saveNewOffice(@Valid OfficeView officeViewParam);
 
     /**
      * Обновить данные офиса
-     *
      */
     void officeUpdate(@Valid OfficeView officeViewParam);
 
     /**
      * Получить список офисов по id организации
-     *
      */
     List<OfficeView> getOfficesByOrgId(Long orgId);
 }

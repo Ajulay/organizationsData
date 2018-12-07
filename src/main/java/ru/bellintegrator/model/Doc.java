@@ -1,16 +1,9 @@
 package ru.bellintegrator.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Date;
+
 /**
  * Документ
  */
@@ -27,13 +20,13 @@ public class Doc {
     /**
      * Номер документа
      */
-    @Column(name="doc_number")
+    @Column(name = "doc_number")
     private String docNumber;
 
     /**
      * Дата документа
      */
-    @Column(name="doc_date")
+    @Column(name = "doc_date")
     @Temporal(TemporalType.DATE)
     private Date docDate;
 
@@ -41,7 +34,7 @@ public class Doc {
      * Тип документа, обязательный параметр
      */
     @ManyToOne
-    @JoinColumn(name="doc_type_id")
+    @JoinColumn(name = "doc_type_id")
     private DocType docType;
 
     public long getId() {
@@ -53,7 +46,7 @@ public class Doc {
     }
 
     public String getDocNumber() {
-        if(docNumber != null){
+        if (docNumber != null) {
             docNumber.trim();
         }
         return docNumber;

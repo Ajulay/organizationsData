@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Сервис
- * */
+ */
 @Validated
 public interface OrganizationService {
 
@@ -17,24 +17,22 @@ public interface OrganizationService {
      *
      * @return {@OrganizationView}
      */
-    List<OrganizationView> getOrganizationsByViewParam (OrganizationView organizationViewParam);
+    List<OrganizationView> getOrganizationsByViewParam(OrganizationView organizationViewParam);
 
     /**
      * Получить организацию по id
      *
      * @return {@OrganizationView}
      */
-    OrganizationView findById (Long id);
+    OrganizationView findById(Long id);
 
     /**
      * Обновить данные организации
-     *
      */
     void organizationUpdate(@Valid OrganizationView organizationViewParam);
 
     /**
      * Сохранить данные новой организации
-     *
      */
     void saveNewOrganization(@Valid OrganizationView organizationView);
 }

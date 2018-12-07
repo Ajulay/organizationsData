@@ -2,7 +2,6 @@ package ru.bellintegrator.dao.docdao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.bellintegrator.model.Country;
 import ru.bellintegrator.model.DocType;
 
 import javax.persistence.EntityManager;
@@ -13,12 +12,14 @@ import java.util.List;
  * {@inheritDoc}
  */
 @Repository
-public class DocDaoImpl implements DocDao{
+public class DocDaoImpl implements DocDao {
 
     private final EntityManager em;
 
     @Autowired
-    public DocDaoImpl(EntityManager em) { this.em = em; }
+    public DocDaoImpl(EntityManager em) {
+        this.em = em;
+    }
 
     /**
      * {@inheritDoc}

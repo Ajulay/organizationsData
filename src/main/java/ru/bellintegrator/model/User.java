@@ -1,20 +1,27 @@
 package ru.bellintegrator.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * Сотрудник
  */
 @Entity
-@Table(name="_user")
-public class User{
+@Table(name = "_user")
+public class User {
 
     /**
      * Уникальный идентификатор
      */
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
@@ -27,7 +34,7 @@ public class User{
     /**
      * Фамилия
      */
-    @Column(name="first_name", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     /**
@@ -39,7 +46,7 @@ public class User{
     /**
      * Отчество
      */
-    @Column(name="middle_name")
+    @Column(name = "middle_name")
     private String middleName;
 
     /**
@@ -71,7 +78,7 @@ public class User{
     /**
      * Сведения о подтверждении личности
      */
-    @Column(name="identified")
+    @Column(name = "identified")
     private Boolean identified;
 
     public Long getId() {
@@ -99,7 +106,7 @@ public class User{
     }
 
     public String getSecondName() {
-        if(secondName != null){
+        if (secondName != null) {
             secondName.trim();
         }
         return secondName;
@@ -110,7 +117,7 @@ public class User{
     }
 
     public String getMiddleName() {
-        if(middleName != null){
+        if (middleName != null) {
             middleName.trim();
         }
         return middleName;
@@ -129,7 +136,7 @@ public class User{
     }
 
     public String getPhone() {
-        if(phone != null){
+        if (phone != null) {
             phone.trim();
         }
         return phone;

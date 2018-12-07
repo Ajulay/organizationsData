@@ -16,7 +16,9 @@ public class CountryDaoImpl implements CountryDao {
     private final EntityManager em;
 
     @Autowired
-    public CountryDaoImpl(EntityManager em) { this.em = em; }
+    public CountryDaoImpl(EntityManager em) {
+        this.em = em;
+    }
 
     /**
      * {@inheritDoc}

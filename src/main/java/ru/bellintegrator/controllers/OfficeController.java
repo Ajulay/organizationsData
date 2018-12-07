@@ -1,13 +1,7 @@
 package ru.bellintegrator.controllers;
 
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.bellintegrator.services.OfficeService;
 import ru.bellintegrator.view.OfficeView;
 
@@ -18,8 +12,7 @@ import java.util.List;
 
 /**
  * Controler управления информацией об офисах
- *
- * */
+ */
 @RestController
 @RequestMapping("api/office")
 @Produces("application/json")
@@ -41,13 +34,13 @@ public class OfficeController {
      */
     @PostMapping("/list/{orgId}")
     public List<OfficeView> getOfficesByParam(@PathVariable("orgId") Long orgId, @RequestBody OfficeView officeView) throws Exception {
-        if(orgId == null && officeView.orgId == null){
+        if (orgId == null && officeView.orgId == null) {
             throw new Exception("Where is orgId?");
         }
-        if(officeView.orgId == null){
+        if (officeView.orgId == null) {
             officeView.orgId = orgId;
         }
-            return officeService.getOfficesByOfficeViewParam(officeView);
+        return officeService.getOfficesByOfficeViewParam(officeView);
     }
 
     /**
@@ -58,7 +51,13 @@ public class OfficeController {
      */
     @GetMapping("/{id}")
     public OfficeView getOfficeById(@PathVariable("id") Long id) {
-            return  officeService.getOfficeById(id);
+        OfficeView officeView;
+        try {
+            officeView = officeService.getOfficeById(id);
+        } catch (NullPointerException e) {
+            return new OfficeView();
+        }
+        return officeView;
     }
 
     /**
@@ -68,7 +67,7 @@ public class OfficeController {
      * @return
      */
     @PostMapping("/save")
-    public void saveNewOffice(@Valid @RequestBody OfficeView officeView){
+    public void saveNewOffice(@Valid @RequestBody OfficeView officeView) {
         officeService.saveNewOffice(officeView);
     }
 
@@ -80,7 +79,7 @@ public class OfficeController {
      */
     @PostMapping("/update")
     public void officeUpdate(@Valid @RequestBody OfficeView officeView) throws Exception {
-        if(officeView.id == null){
+        if (officeView.id == null) {
             throw new Exception("Where is id?");
         }
         officeService.officeUpdate(officeView);

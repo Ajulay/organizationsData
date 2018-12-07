@@ -22,7 +22,10 @@ public class OrganizationDaoImpl implements OrganizationDao {
     private final EntityManager em;
 
     @Autowired
-    public OrganizationDaoImpl(EntityManager em) { this.em = em; }
+    public OrganizationDaoImpl(EntityManager em) {
+        this.em = em;
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -64,30 +67,28 @@ public class OrganizationDaoImpl implements OrganizationDao {
 
         List<Predicate> predicates = new ArrayList<Predicate>();
 
-        //Проверка на наличие значения в представлении
-
-        if(organizationView.id != null){
+        if (organizationView.id != null) {
             predicates.add(builder.equal(organization.get("id"), organizationView.id));
         }
-        if(organizationView.name != null && !"".equals(organizationView.name)){
+        if (organizationView.name != null && !"".equals(organizationView.name)) {
             predicates.add(builder.equal(organization.get("name"), organizationView.name));
         }
-        if(organizationView.fullName != null && !"".equals(organizationView.fullName)){
+        if (organizationView.fullName != null && !"".equals(organizationView.fullName)) {
             predicates.add(builder.equal(organization.get("fullName"), organizationView.fullName));
         }
-        if(organizationView.inn != null && !"".equals(organizationView.inn)){
+        if (organizationView.inn != null && !"".equals(organizationView.inn)) {
             predicates.add(builder.equal(organization.get("inn"), organizationView.inn));
         }
-        if(organizationView.kpp != null && !"".equals(organizationView.kpp)){
+        if (organizationView.kpp != null && !"".equals(organizationView.kpp)) {
             predicates.add(builder.equal(organization.get("kpp"), organizationView.kpp));
         }
-        if(organizationView.address != null && !"".equals(organizationView.address)){
+        if (organizationView.address != null && !"".equals(organizationView.address)) {
             predicates.add(builder.equal(organization.get("address"), organizationView.address));
         }
-        if(organizationView.phone != null && !"".equals(organizationView.phone)){
+        if (organizationView.phone != null && !"".equals(organizationView.phone)) {
             predicates.add(builder.equal(organization.get("phone"), organizationView.phone));
         }
-        if(organizationView.isActive != null){
+        if (organizationView.isActive != null) {
             predicates.add(builder.equal(organization.get("active"), organizationView.isActive));
         }
 

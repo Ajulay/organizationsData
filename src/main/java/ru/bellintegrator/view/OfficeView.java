@@ -1,41 +1,42 @@
 package ru.bellintegrator.view;
 
 import javax.validation.constraints.NotEmpty;
+
 /**
  * Офис
- * */
+ */
 public class OfficeView {
 
     /**
      * Уникальный идентификатор
-     * */
+     */
     public Long id;
 
     /**
      * Идентификатор организации
-     * */
+     */
     public Long orgId;
 
     /**
      * Название офиса
-     * */
+     */
     @NotEmpty
     public String name;
 
     /**
      * Адрес
-     * */
+     */
     @NotEmpty
     public String address;
 
     /**
      * Телефон
-     * */
+     */
     public String phone;
 
     /**
      * Состояние офиса (работает - прекратил деятельность)
-     * */
+     */
     public Boolean isActive;
 
     @Override

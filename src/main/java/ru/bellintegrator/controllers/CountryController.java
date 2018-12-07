@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.services.CountryService;
 import ru.bellintegrator.view.CountryView;
+
 import javax.ws.rs.Produces;
 import java.util.List;
 
 /**
  * Controller управления справочной информацией по странам
  */
+
 @RestController
 @RequestMapping("/api/")
 @Produces("application/json")
@@ -28,8 +30,9 @@ public class CountryController {
      *
      * @return 'List<CountryView>'
      */
+
     @PostMapping("/countries")
-    public List<CountryView> getDocs() {
+    public List<CountryView> getCountries() {
         return countryService.getCountries();
     }
 }

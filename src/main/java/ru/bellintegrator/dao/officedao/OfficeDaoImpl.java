@@ -23,7 +23,9 @@ public class OfficeDaoImpl implements OfficeDao {
     private final EntityManager em;
 
     @Autowired
-    public OfficeDaoImpl(EntityManager em) { this.em = em; }
+    public OfficeDaoImpl(EntityManager em) {
+        this.em = em;
+    }
 
     /**
      * {@inheritDoc}
@@ -48,6 +50,7 @@ public class OfficeDaoImpl implements OfficeDao {
     public void update(Office office) {
         em.merge(office);
     }
+
     /**
      * {@inheritDoc}
      */
@@ -73,25 +76,24 @@ public class OfficeDaoImpl implements OfficeDao {
         CriteriaQuery<Office> criteria = builder.createQuery(Office.class);
         Root<Office> office = criteria.from(Office.class);
         List<Predicate> predicates = new ArrayList<Predicate>();
-        //Проверка на наличие значения в представлении
 
-        if(officeView.id !=null && !"".equals(officeView.id)){
+        if (officeView.id != null && !"".equals(officeView.id)) {
             predicates.add(builder.equal(office.get("id"), officeView.id));
         }
-        if(officeView.name != null && !"".equals(officeView.name)){
+        if (officeView.name != null && !"".equals(officeView.name)) {
             predicates.add(builder.equal(office.get("name"), officeView.name));
         }
-        if(officeView.orgId !=null && !"".equals(officeView.orgId)){
+        if (officeView.orgId != null && !"".equals(officeView.orgId)) {
             predicates.add(builder.equal(office.get("organization").get("id"), officeView.orgId));
         }
 
-        if(officeView.address != null && !"".equals(officeView.address)){
+        if (officeView.address != null && !"".equals(officeView.address)) {
             predicates.add(builder.equal(office.get("address"), officeView.address));
         }
-        if(officeView.phone != null && !"".equals(officeView.phone)){
+        if (officeView.phone != null && !"".equals(officeView.phone)) {
             predicates.add(builder.equal(office.get("phone"), officeView.phone));
         }
-        if(officeView.isActive != null){
+        if (officeView.isActive != null) {
             predicates.add(builder.equal(office.get("active"), officeView.isActive));
         }
         criteria.where(predicates.toArray(new Predicate[]{}));
