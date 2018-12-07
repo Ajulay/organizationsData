@@ -24,25 +24,25 @@ public class Organization {
     /**
      * Название организации, не может быть без названия
      */
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String name;
 
     /**
      * Полное(юридическое) название организации
      */
-    @Column(name = "fullname", nullable = false)
+    @Column(length = 150, name = "fullname", nullable = false)
     private String fullName;
 
     /**
      * Инн организации, не может отсутствовать
      */
-    @Column(nullable = false)
+    @Column(length = 10, nullable = false)
     private String inn;
 
     /**
      * КПП организации, не может отсутствовать
      */
-    @Column(nullable = false)
+    @Column(length = 9, nullable = false)
     private String kpp;
 
     /**
@@ -54,7 +54,7 @@ public class Organization {
     /**
      * Телефон организации
      */
-    @Column
+    @Column(length = 16)
     private String phone;
 
     /**

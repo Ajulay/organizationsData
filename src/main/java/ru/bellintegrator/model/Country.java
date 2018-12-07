@@ -15,13 +15,13 @@ public class Country {
     /**
      * Название страны, не может быть без названия
      */
-    @Column(nullable = false)
+    @Column(length = 35, nullable = false)
     private String name;
 
     /**
      * Код страны, должен быть присвоен
      */
-    @Column(nullable = false)
+    @Column(length = 3, nullable = false)
     private String code;
 
     public long getId() {

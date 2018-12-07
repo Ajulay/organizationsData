@@ -34,31 +34,31 @@ public class User {
     /**
      * Фамилия
      */
-    @Column(name = "first_name", nullable = false)
+    @Column(length = 50, name = "first_name", nullable = false)
     private String firstName;
 
     /**
      * Имя
      */
-    @Column(name = "second_name")
+    @Column(length = 50, name = "second_name")
     private String secondName;
 
     /**
      * Отчество
      */
-    @Column(name = "middle_name")
+    @Column(length = 50, name = "middle_name")
     private String middleName;
 
     /**
      * Должность
      */
-    @Column(name = "pozition", nullable = false)
+    @Column(length = 50, name = "pozition", nullable = false)
     private String position;
 
     /**
      * Телефон
      */
-    @Column
+    @Column(length = 16)
     private String phone;
 
     /**

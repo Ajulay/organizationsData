@@ -22,13 +22,13 @@ public class DocType {
     /**
      * Название типа документа
      */
-    @Column(nullable = false)
+    @Column(length = 55,nullable = false)
     private String name;
 
     /**
      * Код типа документа
      */
-    @Column(nullable = false)
+    @Column(length = 3, nullable = false)
     private String code;
 
     public long getId() {

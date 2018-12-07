@@ -32,7 +32,7 @@ public class Office {
     /**
      * Название офиса
      */
-    @Column(nullable = false)
+    @Column(length = 150, nullable = false)
     private String name;
 
     /**
@@ -44,7 +44,7 @@ public class Office {
     /**
      * Телефон
      */
-    @Column
+    @Column(length = 16)
     private String phone;
 
     /**
