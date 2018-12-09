@@ -7,6 +7,7 @@ import ru.bellintegrator.dao.docdao.DocDao;
 import ru.bellintegrator.model.DocType;
 import ru.bellintegrator.model.mapper.MapperFacade;
 import ru.bellintegrator.view.DocTypeView;
+
 import java.util.List;
 
 /**
@@ -28,8 +29,11 @@ public class DocTypeServiceImpl implements DocTypeService {
      * {@inheritDoc}
      */
     @Transactional
-    public List<DocTypeView> getDocTypes() {
+    public List<DocTypeView> getDocTypes() throws Exception {
         List<DocType> docTypes = docDao.getDocTypes();
+        if (docTypes.size() == 0) {
+            throw new Exception("No data");
+        }
         return mapperFacade.mapAsList(docTypes, DocTypeView.class);
     }
 }

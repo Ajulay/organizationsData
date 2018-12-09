@@ -1,7 +1,12 @@
 package ru.bellintegrator.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.services.UserService;
 import ru.bellintegrator.view.UserView;
 
@@ -45,7 +50,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/{id}")
-    public UserView getUserById(@PathVariable("id") Long id) {
+    public UserView getUserById(@PathVariable("id") Long id) throws Exception {
         return userService.findById(id);
     }
 

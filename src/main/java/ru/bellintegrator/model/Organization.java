@@ -72,7 +72,10 @@ public class Organization {
     }
 
     public String getName() {
-        return name.trim();
+        if (name != null) {
+            name = name.trim();
+        }
+        return name;
     }
 
     public void setName(String name) {
@@ -80,7 +83,10 @@ public class Organization {
     }
 
     public String getFullName() {
-        return fullName.trim();
+        if (fullName != null) {
+            fullName = fullName.trim();
+        }
+        return fullName;
     }
 
     public void setFullName(String fullname) {
@@ -105,7 +111,7 @@ public class Organization {
 
     public String getAddress() {
         if (address != null) {
-            address.trim();
+            address = address.trim();
         }
         return address;
     }

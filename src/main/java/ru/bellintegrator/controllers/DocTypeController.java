@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.services.DocTypeService;
 import ru.bellintegrator.view.DocTypeView;
+
 import javax.ws.rs.Produces;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class DocTypeController {
      * @return 'List<DocTypeView>'
      */
     @PostMapping("/docs")
-    public List<DocTypeView> getDocs() {
+    public List<DocTypeView> getDocs() throws Exception {
         return docTypeService.getDocTypes();
     }
 }

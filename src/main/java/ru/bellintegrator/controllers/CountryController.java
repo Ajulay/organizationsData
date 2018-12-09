@@ -31,8 +31,8 @@ public class CountryController {
      * @return 'List<CountryView>'
      */
 
-    @PostMapping("/countries")
-    public List<CountryView> getCountries() {
+    @PostMapping("countries")
+    public List<CountryView> getCountries() throws Exception {
         return countryService.getCountries();
     }
 }

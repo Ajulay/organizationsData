@@ -22,7 +22,7 @@ public class DocType {
     /**
      * Название типа документа
      */
-    @Column(length = 55,nullable = false)
+    @Column(length = 55, nullable = false)
     private String name;
 
     /**

@@ -71,7 +71,7 @@ public class Office {
 
     public String getName() {
         if (name != null) {
-            name.trim();
+            name = name.trim();
         }
         return name;
     }
@@ -82,7 +82,7 @@ public class Office {
 
     public String getAddress() {
         if (address != null) {
-            address.trim();
+            address = address.trim();
         }
         return address;
     }
@@ -93,7 +93,7 @@ public class Office {
 
     public String getPhone() {
         if (phone != null) {
-            phone.trim();
+            phone = phone.trim();
         }
         return phone;
     }

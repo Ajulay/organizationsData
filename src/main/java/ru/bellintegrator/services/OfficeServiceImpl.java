@@ -30,8 +30,11 @@ public class OfficeServiceImpl implements OfficeService {
      * {@inheritDoc}
      */
     @Transactional(readOnly = true)
-    public List<OfficeView> getOfficesByOrgId(Long orgId) {
+    public List<OfficeView> getOfficesByOrgId(Long orgId) throws Exception {
         List<Office> offices = officeDao.loadByOrgId(orgId);
+        if (offices.size() == 0) {
+            throw new Exception("No data");
+        }
         return mapperFacade.mapAsList(offices, OfficeView.class);
     }
 
@@ -39,8 +42,11 @@ public class OfficeServiceImpl implements OfficeService {
      * {@inheritDoc}
      */
     @Transactional(readOnly = true)
-    public List<OfficeView> getOfficesByOfficeViewParam(OfficeView officeViewParam) {
+    public List<OfficeView> getOfficesByOfficeViewParam(OfficeView officeViewParam) throws Exception {
         List<Office> offices = officeDao.loadByOfficeViewParam(officeViewParam);
+        if (offices.size() == 0) {
+            throw new Exception("No data");
+        }
         return mapperFacade.mapAsList(offices, OfficeView.class);
     }
 
@@ -48,8 +54,11 @@ public class OfficeServiceImpl implements OfficeService {
      * {@inheritDoc}
      */
     @Transactional(readOnly = true)
-    public OfficeView getOfficeById(Long id) {
+    public OfficeView getOfficeById(Long id) throws Exception {
         Office office = officeDao.loadById(id);
+        if (office == null) {
+            throw new Exception("No data");
+        }
         return mapperFacade.map(office, OfficeView.class);
     }
 

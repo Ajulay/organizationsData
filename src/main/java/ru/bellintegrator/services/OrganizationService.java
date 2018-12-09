@@ -17,14 +17,14 @@ public interface OrganizationService {
      *
      * @return {@OrganizationView}
      */
-    List<OrganizationView> getOrganizationsByViewParam(OrganizationView organizationViewParam);
+    List<OrganizationView> getOrganizationsByViewParam(OrganizationView organizationViewParam) throws Exception;
 
     /**
      * Получить организацию по id
      *
      * @return {@OrganizationView}
      */
-    OrganizationView findById(Long id);
+    OrganizationView findById(Long id) throws Exception;
 
     /**
      * Обновить данные организации

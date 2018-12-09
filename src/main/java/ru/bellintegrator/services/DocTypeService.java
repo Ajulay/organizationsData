@@ -1,6 +1,7 @@
 package ru.bellintegrator.services;
 
 import ru.bellintegrator.view.DocTypeView;
+
 import java.util.List;
 
 /**
@@ -13,5 +14,5 @@ public interface DocTypeService {
      *
      * @return {@DocTypeView}
      */
-    List<DocTypeView> getDocTypes();
+    List<DocTypeView> getDocTypes() throws Exception;
 }

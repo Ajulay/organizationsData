@@ -29,8 +29,11 @@ public class OrganizationServiceImpl implements OrganizationService {
      * {@inheritDoc}
      */
     @Transactional(readOnly = true)
-    public List<OrganizationView> getOrganizationsByViewParam(OrganizationView organizationViewParam) {
+    public List<OrganizationView> getOrganizationsByViewParam(OrganizationView organizationViewParam) throws Exception {
         List<Organization> organizations = dao.loadByViewParam(organizationViewParam);
+        if (organizations.size() == 0) {
+            throw new Exception("No data");
+        }
         return mapperFacade.mapAsList(organizations, OrganizationView.class);
     }
 
@@ -38,8 +41,11 @@ public class OrganizationServiceImpl implements OrganizationService {
      * {@inheritDoc}
      */
     @Transactional(readOnly = true)
-    public OrganizationView findById(Long id) {
+    public OrganizationView findById(Long id) throws Exception {
         Organization organization = dao.loadById(id);
+        if (organization == null) {
+            throw new Exception("No data");
+        }
         return mapperFacade.map(organization, OrganizationView.class);
     }
 

@@ -98,7 +98,10 @@ public class User {
     }
 
     public String getFirstName() {
-        return firstName.trim();
+        if (firstName != null) {
+            firstName = firstName.trim();
+        }
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -107,7 +110,7 @@ public class User {
 
     public String getSecondName() {
         if (secondName != null) {
-            secondName.trim();
+            secondName = secondName.trim();
         }
         return secondName;
     }
@@ -118,7 +121,7 @@ public class User {
 
     public String getMiddleName() {
         if (middleName != null) {
-            middleName.trim();
+            middleName = middleName.trim();
         }
         return middleName;
     }
@@ -128,7 +131,10 @@ public class User {
     }
 
     public String getPosition() {
-        return position.trim();
+        if (position != null) {
+            position = position.trim();
+        }
+        return position;
     }
 
     public void setPosition(String position) {
@@ -137,7 +143,7 @@ public class User {
 
     public String getPhone() {
         if (phone != null) {
-            phone.trim();
+            phone = phone.trim();
         }
         return phone;
     }

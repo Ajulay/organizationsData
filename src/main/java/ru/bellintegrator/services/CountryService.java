@@ -1,6 +1,7 @@
 package ru.bellintegrator.services;
 
 import ru.bellintegrator.view.CountryView;
+
 import java.util.List;
 
 /**
@@ -13,5 +14,5 @@ public interface CountryService {
      *
      * @return {@CountryView}
      */
-    List<CountryView> getCountries();
+    List<CountryView> getCountries() throws Exception;
 }

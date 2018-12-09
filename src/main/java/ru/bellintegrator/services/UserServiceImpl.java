@@ -11,7 +11,6 @@ import ru.bellintegrator.model.User;
 import ru.bellintegrator.model.mapper.MapperFacade;
 import ru.bellintegrator.view.UserView;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -39,8 +38,11 @@ public class UserServiceImpl implements UserService {
      * {@inheritDoc}
      */
     @Transactional(readOnly = true)
-    public List<UserView> getUsersByViewParam(UserView userViewParam) {
+    public List<UserView> getUsersByViewParam(UserView userViewParam) throws Exception {
         List<User> users = userDao.loadByViewParam(userViewParam);
+        if (users.size() == 0) {
+            throw new Exception("No data");
+        }
         return mapperFacade.mapAsList(users, UserView.class);
     }
 
@@ -48,8 +50,11 @@ public class UserServiceImpl implements UserService {
      * {@inheritDoc}
      */
     @Transactional(readOnly = true)
-    public UserView findById(Long id) {
+    public UserView findById(Long id) throws Exception {
         User user = userDao.loadById(id);
+        if (user == null) {
+            throw new Exception("No data");
+        }
         return mapperFacade.map(user, UserView.class);
     }
 
@@ -69,48 +74,5 @@ public class UserServiceImpl implements UserService {
     public void userUpdate(UserView userView) {
         User user = mapperFacade.map(userView, User.class);
         userDao.update(user);
-    }
-
-    private UserView createUserView(User user) {
-        UserView userView = new UserView();
-        userView.id = user.getId();
-        userView.officeId = user.getOffice().getId();
-        userView.firstName = user.getFirstName();
-        if (user.getSecondName() != null) {
-            userView.secondName = user.getSecondName();
-        }
-        if (user.getMiddleName() != null) {
-            userView.middleName = user.getMiddleName();
-        }
-        userView.position = user.getPosition();
-        if (user.getDoc() != null) {
-            if (user.getDoc().getDocType() != null) {
-                userView.docName = user.getDoc().getDocType().getName();
-            }
-            if (user.getDoc().getDocType() != null) {
-                userView.docCode = user.getDoc().getDocType().getCode();
-            }
-            if (user.getDoc().getDocNumber() != null) {
-                userView.docNumber = user.getDoc().getDocNumber();
-            }
-            if (user.getDoc().getDocDate() != null) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String sDate = sdf.format(user.getDoc().getDocDate());
-                userView.docDate = sDate;
-            }
-        }
-        if (user.getCountry() != null) {
-            userView.citizenshipName = user.getCountry().getName();
-        }
-        if (user.getCountry() != null) {
-            userView.citizenshipCode = user.getCountry().getCode();
-        }
-        if (user.getPhone() != null) {
-            userView.phone = user.getPhone();
-        }
-        if (user.isIdentified() != null) {
-            userView.isIdentified = user.isIdentified();
-        }
-        return userView;
     }
 }

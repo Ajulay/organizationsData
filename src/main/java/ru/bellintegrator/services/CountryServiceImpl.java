@@ -14,7 +14,7 @@ import java.util.List;
  * {@inheritDoc}
  */
 @Service
-public class CountryServiceImpl implements CountryService{
+public class CountryServiceImpl implements CountryService {
 
     private final CountryDao countryDao;
     private final MapperFacade mapperFacade;
@@ -29,8 +29,11 @@ public class CountryServiceImpl implements CountryService{
      * {@inheritDoc}
      */
     @Transactional
-    public List<CountryView> getCountries(){
+    public List<CountryView> getCountries() throws Exception {
         List<Country> countries = countryDao.getCountries();
+        if (countries.size() == 0) {
+            throw new Exception("No data");
+        }
         return mapperFacade.mapAsList(countries, CountryView.class);
     }
 }

@@ -2,6 +2,7 @@ package ru.bellintegrator.services;
 
 import org.springframework.validation.annotation.Validated;
 import ru.bellintegrator.view.OfficeView;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -16,14 +17,14 @@ public interface OfficeService {
      *
      * @return {@OfficeView}
      */
-    List<OfficeView> getOfficesByOfficeViewParam(OfficeView officeViewParam);
+    List<OfficeView> getOfficesByOfficeViewParam(OfficeView officeViewParam) throws Exception;
 
     /**
      * Получить офис по id
      *
      * @return {@OfficeView}
      */
-    OfficeView getOfficeById(Long id);
+    OfficeView getOfficeById(Long id) throws Exception;
 
     /**
      * Сохранить данные нового офиса
@@ -38,5 +39,5 @@ public interface OfficeService {
     /**
      * Получить список офисов по id организации
      */
-    List<OfficeView> getOfficesByOrgId(Long orgId);
+    List<OfficeView> getOfficesByOrgId(Long orgId) throws Exception;
 }

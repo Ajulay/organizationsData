@@ -18,14 +18,14 @@ public interface UserService {
      *
      * @return {@UserView}
      */
-    List<UserView> getUsersByViewParam(UserView userViewParam);
+    List<UserView> getUsersByViewParam(UserView userViewParam) throws Exception;
 
     /**
      * Получить сотрудника по id
      *
      * @return {@UserView}
      */
-    UserView findById(Long id);
+    UserView findById(Long id) throws Exception;
 
     /**
      * Сохранить данные нового сотрудника
