@@ -4,6 +4,7 @@ package ru.bellintegrator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
@@ -28,7 +29,8 @@ public class OrganizationsBaseApplicationTests {
     @LocalServerPort
     int randomServerPort;
 
-    RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    RestTemplate restTemplate;
 
     /**
      * Проверка получения перечня стран
